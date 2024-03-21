@@ -5,6 +5,13 @@ using namespace std;
 
 int x; // x是准备运算的数字
 unordered_map<int, int> pirmeToTimes;
+/*
+算法：将一个数字分解为标准因式分解
+获取的所有的divisor是约分子，
+由这些约分子任意组成的数字是这个数字num的约数
+
+*/
+
 
 class sol
 {
