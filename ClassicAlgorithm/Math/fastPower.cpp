@@ -1,6 +1,24 @@
 #include <bits/stdc++.h>
 using namespace std;
 #define ll long long
+
+// 携带高精度的快速幂的算法
+/*
+快速幂原理，
+寻找和二整除的指数
+当指数是奇数的时候，把不断平方的a的值乘上到ans中。
+
+根本意义
+将指数书写为二进制格式，
+例如，13 = 1101
+那么，a的七次方就是
+a^(4+2+1)
+所以指数13不断左移除2时候
+ans会在a^1  a^4  a^8的时候进行与不断自乘的a相乘
+最后ans的值就是ans
+
+*/
+
 class hp
 {
 public:
@@ -176,5 +194,5 @@ void test()
 int main()
 {
     // test();
-    cout<<fastPower(2, 13, INT_MAX);
+    cout << fastPower(2, 13, INT_MAX);
 }
