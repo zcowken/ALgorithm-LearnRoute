@@ -10,7 +10,8 @@
         "random": "cpp",
         "functional": "cpp",
         "*.tcc": "cpp",
-        "ratio": "cpp"
+        "ratio": "cpp",
+        "stack": "cpp"
     },
     "window.zoomLevel": 0
 }
