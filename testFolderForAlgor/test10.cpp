@@ -4,7 +4,6 @@ using namespace std;
 #define N 100000010
 #define ll long long
 
-
 int cnt = 0;
 int primes[N];
 int n;
@@ -102,12 +101,7 @@ ll fa(ll c)
 
 int main()
 {
-    sieve_S().make();
-
-    for (int i = 0; i < cnt; i++)
-    {
-        cout << primes[i] << " " << fa(primes[i] - 1) % primes[i] << endl;
-    }
-
+    // 101,110,1011
+    cout << (6 & 11) << endl;
     return 0;
 }
