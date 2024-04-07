@@ -2,6 +2,10 @@
 
 using namespace std;
 
+/*
+染色法判断二分图
+*/
+
 class Solution //AC,判断二分图
 {
 public:

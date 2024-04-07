@@ -29,6 +29,7 @@ public:
             G[b][a] = w;
         }
 
+        //图的初始化之后的结果
         for (int i = 1; i <= n; i++)
         {
             for (int j = 1; j <= n; j++)

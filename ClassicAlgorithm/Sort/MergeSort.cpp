@@ -158,12 +158,16 @@ void testgpt()
     cout << endl;
 }
 
-int main()
+void run()
 {
     testgpt();
     cout << "test02" << endl;
 
     sol_mergeSort().test();
+}
+
+int main()
+{
 
     return 0;
 }

@@ -8,7 +8,7 @@ int n;
 int a[N];
 int ans = 0;
 
-class sol
+class sol // 朴素版本的递增子序列长度的写法
 {
 public:
     void init()

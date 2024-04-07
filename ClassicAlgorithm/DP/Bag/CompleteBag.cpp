@@ -3,7 +3,7 @@
 using namespace std;
 
 const int N = 2022;
-int f[N][N];
+int f[N][N]; // 代表的是前i种类物品，容量为j的最大价值
 int f2[N];
 int v[N], w[N];
 int n, m;
@@ -13,7 +13,7 @@ class sol
 public:
     void init()
     {
-        cin >> n >> m;
+        cin >> n >> m; // 容量最大为m，物品种类为n
         for (int i = 1; i <= n; i++)
         {
             cin >> v[i] >> w[i];
@@ -38,7 +38,7 @@ public:
         cout << f[n][m] << endl;
     }
 
-    void make2() // 三维压缩到一维
+    void make2() // 三维压缩到二维
     {
         init();
 
@@ -61,7 +61,7 @@ public:
     {
         init();
 
-        for (int i = 1; i <= n; i++)
+        for (int i = 1; i <= n; i++) //三维到二维优化到一维
         {
             /*
                 将f改为一维的f2的原因
