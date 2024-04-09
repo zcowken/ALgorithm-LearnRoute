@@ -49,6 +49,8 @@ public:
             k++;
         }
     }
+
+    //辅助函数递归mergeSort写法（可以更加简便）
     void mergeSort(vector<int> &arr, int l, int r)
     {
         if (l < r)

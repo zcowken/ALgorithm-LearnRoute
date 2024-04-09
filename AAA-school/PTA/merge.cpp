@@ -2,49 +2,123 @@
 #include <vector>
 using namespace std;
 #include <algorithm>
-const int N = 10011;
+#include <queue>
+#include <cmath>
+
+const int N = 10100;
 int a[N];
 int b[N];
-int n1, n2;
 
-void test()
+int n;
+int mid, mid_pos;
+int av;
+int ans_a, ans_b;
+int ans;
+
+// 搜索可行
+class sol
 {
-    cin >> n1;
-    for (int i = 1; i <= n1; i++)
+public:
+    void toB()
     {
-        cin >> a[i];
-    }
-    cin >> n2;
-    for (int i = 1; i <= n2; i++)
-    {
-        cin >> b[i];
-    }
-
-    int p1;
-    int p2;
-    int len = n1 + n2;
-    int mid;
-    mid = len / 2;
-
-    for (p1 = 1, p2 = 1; p1 <= n1 || p2 <= n2; p1++, p2++)
-    {
-        if (mid == p1 + p2)
+        if (n % 2 == 0)
         {
-            break;
-        }
-        if (p1 > n1 || a[p1] < b[p2])
-        {
-            p1++;
+            int l = n / 2;
+            int r = l + 1;
+            mid = b[l];
         }
         else
         {
-            p2++;
+            int l = 1 + n >> 1;
+            mid = b[l];
+        }
+
+        for (int i = 1; i <= n; i++)
+        {
+            ans += abs(b[i] - mid);
         }
     }
-}
+
+    void toA()
+    {
+        if (n % 2 == 0)
+        {
+            int l = n / 2;
+            int r = l + 1;
+            mid = a[l];
+        }
+        else
+        {
+            int l = 1 + n >> 1;
+            mid = a[l];
+        }
+
+        for (int i = 1; i <= n; i++)
+        {
+            ans += abs(a[i] - mid);
+        }
+    }
+
+    void init()
+    {
+        cin >> n;
+        for (int i = 1; i <= n; i++)
+        {
+            cin >> a[i] >> b[i];
+        }
+        sort(a + 1, a + n + 1);
+        sort(b + 1, b + n + 1);
+
+        for (int i = 1; i <= n; i++)
+        {
+            a[i] = a[i] - (i - 1);
+        }
+        sort(a + 1, a + n + 1);
+
+        toB();
+        toA();
+
+        cout << ans;
+    }
+
+    void make()
+    {
+        init();
+    }
+
+    void show_b()
+    {
+        for (int i = 1; i <= n; i++)
+        {
+            cout << b[i] << " ";
+        }
+        cout << endl;
+    }
+};
 
 int main()
 {
-    test();
+    cin.tie(0);
+    ios::sync_with_stdio(false);
+
+    sol().make();
+
     return 0;
 }
+/*
+5
+1 2
+2 2
+1 3
+3 -2
+3 3
+
+
+6
+1 2
+2 2
+1 3
+3 -2
+3 3
+3 3
+*/
