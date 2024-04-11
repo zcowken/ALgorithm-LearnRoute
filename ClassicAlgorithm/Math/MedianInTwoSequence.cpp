@@ -5,6 +5,12 @@ using namespace std;
 #include <iostream>
 #include <vector>
 
+/*
+计算两个有序序列的中位数
+输入会保证有序性质
+*/
+
+
 const int N = 25e5;
 int a[N];
 int b[N];

@@ -1,107 +1,27 @@
-// 这里提供了三种逐步更新的筛法
-#include <bits/stdc++.h>
+#include <cstdio>
+#include <queue>
 using namespace std;
-#define N 100000010
-#define ll long long
 
-int cnt = 0;
-int primes[N];
-int n;
-bool vis[N];
+const int N=100005;
+int a[N],b[N],id[N];
+priority_queue<pair<int,int>,
+       vector<pair<int,int>>,
+       greater<pair<int,int>>>q;
+//id[i]: 记录b[i]的搭档的下标
+//q: 小根堆，存储<两数和,组的下标>
 
-class sieve_S
-{
-public:
-    void show()
-    {
-        for (int i = 0; i < cnt; i++)
-        {
-            cout << primes[i] << endl;
-        }
-    }
-
-    int normal_sieve()
-    {
-        for (int i = 2; i <= n; i++)
-        {
-            if (!vis[i])
-            {
-                primes[cnt++] = i;
-            }
-            for (int j = i + i; j <= n; j += i)
-            {
-                vis[j] = true;
-            }
-        }
-        return cnt;
-    }
-
-    int Ai_sieve()
-    {
-        for (int i = 2; i <= n; i++)
-        {
-            if (!vis[i])
-            {
-                primes[cnt++] = i;
-                cnt++;
-                for (int j = i + i; j <= n; j += i)
-                {
-                    vis[j] = true;
-                }
-            }
-        }
-        return cnt;
-    }
-
-    /*
-    停止条件 primes[j] <= n / i
-    当i是一个合数的时候，在i%primes[j]的时候会找到这个合数的最小质因数，然后break，
-    当i是一个质数的时候，primes[j]已经加入了i这个质数了，所以当primes[j]枚举到i的时候会停下。
-
-    */
-
-    int Euler_sieve()
-    {
-        for (int i = 2; i <= n; i++)
-        {
-            if (!vis[i])
-            {
-                primes[cnt++] = i;
-            }
-            for (int j = 0; primes[j] <= n / i; j++) // 为什么能够在primes[j]的时候可以自动停下来呢？看函数开头
-            {
-                vis[primes[j] * i] = true;
-                if (i % primes[j] == 0) // 这个break条件包含了什么含义？看开头
-                {
-                    break;
-                }
-            }
-        }
-        return cnt;
-    }
-
-    void make()
-    {
-        cin >> n;
-        Euler_sieve();
-
-        cout << cnt << endl;
-        // show();
-    }
-};
-
-ll fa(ll c)
-{
-    if (c == 0)
-    {
-        return 1;
-    }
-    return c * fa(c - 1);
-}
-
-int main()
-{
-    // 101,110,1011
-    cout << (6 & 11) << endl;
-    return 0;
+int main(){
+  int n; scanf("%d",&n);
+  for(int i=1; i<=n; i++) scanf("%d",&a[i]);
+  for(int i=1; i<=n; i++){
+    scanf("%d",&b[i]); 
+    id[i]=1;
+    q.push({a[1]+b[i],i});
+  }
+  while(n--){
+    printf("%d ",q.top().first);
+    int i=q.top().second; q.pop();
+    q.push({a[++id[i]]+b[i],i});
+  }
+  return 0;
 }
