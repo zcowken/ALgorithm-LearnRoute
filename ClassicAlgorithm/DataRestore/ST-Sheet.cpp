@@ -58,7 +58,7 @@ public:
             cin >> a[i];
         }
 
-        for (int i = 1; i <= m; i++)
+        for (int i = 1; i <= m; i++)//查询操作保存
         {
             cin >> s[i].l >> s[i].r;
         }

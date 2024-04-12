@@ -285,12 +285,21 @@ public:
     }
 };
 
-int main()
+void test_div()
 {
     string n1;
     string n2;
     int divisor;
-    cin >> n1 >> n2;
-    cout << hyper::mul(n1, n2);
+    cin >> n1 >> divisor;
+    cout << hyper::div(n1, divisor);
+}
+int main()
+{
+    // string n1;
+    // string n2;
+    // int divisor;
+    // cin >> n1 >> n2;
+    // cout << hyper::sub(n1, n2);
+    test_div();
     return 0;
 }
