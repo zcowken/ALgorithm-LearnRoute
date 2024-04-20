@@ -50,7 +50,7 @@ public:
     {
         cin >> n >> a;
         cin >> m >> b;
-        for (int i = 1; i <= n; i++) // 将a操作变化为b的前0位（纵向初始化）
+        for (int i = 1; i <= n; i++) // 将a前i位操作变化为b的前0位（纵向初始化）
         {
             f[i][0] = i;
         }

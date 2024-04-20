@@ -23,7 +23,7 @@ public:
             s[i] = s[i - 1] + s[i];
         }
 
-        for (int len = 2; len <= n; len++)
+        for (int len = 2; len <= n; len++) // 区间dp
         {
             for (int i = 1; i + len - 1 <= n; i++)
             {
