@@ -4,6 +4,7 @@ using namespace std;
 
 const int N = 2022;
 int f[N][N]; // 代表的是前i种类物品，容量为j的最大价值
+int ff[N][N];
 int f2[N];
 int v[N], w[N];
 int n, m;
@@ -31,6 +32,7 @@ public:
                 f[i][j] = f[i - 1][j];
                 for (int k = 0; k * v[i] <= j; k++)
                 {
+
                     f[i][j] = max(f[i][j], f[i][j - k * v[i]] + k * w[i]);
                 }
             }
@@ -48,6 +50,10 @@ public:
             {
                 f[i][j] = f[i - 1][j];
 
+                if (f[i][j - v[i]] + w[i] > f[i][j])
+                {
+                    ff[i][j] = i;
+                }
                 if (j >= v[i])
                 {
                     f[i][j] = max(f[i][j], f[i][j - v[i]] + w[i]);
@@ -55,13 +61,16 @@ public:
             }
         }
         cout << f[n][m] << endl;
+
+        show();
+        showTag();
     }
 
     void make3()
     {
         init();
 
-        for (int i = 1; i <= n; i++) //三维到二维优化到一维
+        for (int i = 1; i <= n; i++) // 三维到二维优化到一维
         {
             /*
                 将f改为一维的f2的原因
@@ -89,12 +98,36 @@ public:
         }
         cout << f2[m] << endl;
     }
+
+    void show()
+    {
+        for (int i = 0; i <= n; i++)
+        {
+            for (int j = 0; j <= m; j++)
+            {
+                cout << f[i][j] << " ";
+            }
+            cout << endl;
+        }
+    }
+
+    void showTag()
+    {
+        for (int i = 0; i <= n; i++)
+        {
+            for (int j = 0; j <= m; j++)
+            {
+                cout << ff[i][j] << " ";
+            }
+            cout << endl;
+        }
+    }
 };
 
 int main()
 {
     // ios::sync_with_stdio(false);
     // cin.tie(0);
-    sol().make3();
+    sol().make2();
     return 0;
 }

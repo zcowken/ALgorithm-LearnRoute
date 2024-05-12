@@ -3,7 +3,8 @@
 using namespace std;
 
 const int N = 10010;
-int f[N][N]; // 定义f是第i个物品以前，总容量小于n的背包内物品最大价值
+int f[N][N];  // 定义f是第i个物品以前，总容量小于n的背包内物品最大价值
+int ff[N][N]; // dp标记数组
 int f2[N];
 
 int v[N], w[N];
@@ -40,12 +41,44 @@ public:
                 f[i][j] = f[i - 1][j];
                 if (v[i] <= j)
                 {
+                    if (f[i - 1][j - v[i]] + w[i] > f[i][j])
+                    {
+                        ff[i][j] = i;
+                    }
                     f[i][j] = max(f[i][j], f[i - 1][j - v[i]] + w[i]);
                 }
             }
         }
 
         cout << f[n][m] << endl;
+
+        show();
+        cout << "-----------" << endl;
+        showTag();
+    }
+
+    void show()
+    {
+        for (int i = 0; i <= n; i++)
+        {
+            for (int j = 0; j <= m; j++)
+            {
+                cout << f[i][j] << " ";
+            }
+            cout << endl;
+        }
+    }
+
+    void showTag()
+    {
+        for (int i = 0; i <= n; i++)
+        {
+            for (int j = 0; j <= m; j++)
+            {
+                cout << ff[i][j] << " ";
+            }
+            cout << endl;
+        }
     }
 
     void make2() // 将二维递推优化为一维递推
@@ -54,7 +87,7 @@ public:
         可以发现，在递推出f[i][j]的时候，只会使用到有关f[i-1]][...]的数据，
         所以可以将i删除，只保留j相关的位置
         */
-       init();
+        init();
 
         for (int i = 1; i <= n; i++)
         {
@@ -80,6 +113,17 @@ public:
 
 int main()
 {
-    sol().make2();
+    sol().make();
     return 0;
 }
+
+/*
+4 9
+
+3 2
+4 3
+5 4
+7 5
+
+
+*/
