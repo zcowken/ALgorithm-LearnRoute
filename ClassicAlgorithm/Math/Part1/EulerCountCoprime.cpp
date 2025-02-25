@@ -37,6 +37,8 @@ public:
 
         for (auto p : primeTotimes)
         {
+            // 调试信息，打印最小因子和他的指数幂
+            cout<<"p:"<<p.first<<"\t"<< "cnt:" <<p.second<<endl;
             ans = ans * (p.first - 1) / p.first;
         }
 

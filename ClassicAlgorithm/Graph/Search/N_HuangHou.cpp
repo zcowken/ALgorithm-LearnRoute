@@ -78,7 +78,7 @@ public:
         }
         if (x >= n)
         {
-            if (s == n)
+            if (s == n) // 此处的判断意义不大，s==n在上方已经判断
             {
                 for (int i = 0; i < n; i++)
                 {
@@ -90,7 +90,7 @@ public:
             // return;
         }
 
-        dfs2(x, y + 1, s); //递归树思路写法
+        dfs2(x, y + 1, s); // 递归树思路写法
         if (row[x] == false && col[y] == false && dg[x + y] == false && udg[x - y + n] == false)
         {
             row[x] = col[y] = dg[x + y] = udg[x - y + n] = true;
@@ -98,22 +98,22 @@ public:
             dfs2(x, y + 1, s + 1);
             G[x][y] = '.';
             row[x] = col[y] = dg[x + y] = udg[x - y + n] = false;
-        }//递归树的思路写法是直接使用递归树的方式来进行递归操作的，递归深度多，时间较长。
-
-        // for (int i = x; i < n; i++)//循环思路写法
-        // {
-        //     for (int j = y; j < n; j++)
-        //     {
-        //         if (row[i] == false && col[j] == false && dg[i + j] == false && udg[i - j + n] == false)
-        //         {
-        //             row[i] = col[j] = dg[i + j] = udg[i - j + n] = true;
-        //             G[i][j] = 'Q';
-        //             dfs2(x, y + 1, s + 1);
-        //             G[i][j] = '.';
-        //             row[i] = col[j] = dg[i + j] = udg[i - j + n] = false;
-        //         }
-        //     }
-        // }
+        } // 递归树的思路写法是直接使用递归树的方式来进行递归操作的，递归深度多，时间较长。
+        // 循环思路写法
+        //  for (int i = x; i < n; i++)
+        //  {
+        //      for (int j = y; j < n; j++)
+        //      {
+        //          if (row[i] == false && col[j] == false && dg[i + j] == false && udg[i - j + n] == false)
+        //          {
+        //              row[i] = col[j] = dg[i + j] = udg[i - j + n] = true;
+        //              G[i][j] = 'Q';
+        //              dfs2(x, y + 1, s + 1);
+        //              G[i][j] = '.';
+        //              row[i] = col[j] = dg[i + j] = udg[i - j + n] = false;
+        //          }
+        //      }
+        //  }
     }
 };
 

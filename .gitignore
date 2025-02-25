@@ -1,0 +1,8 @@
+### exe ### 
+**/*.exe
+
+### MVN output ###
+**/target/**
+
+### vscode ### 
+.vscode/**

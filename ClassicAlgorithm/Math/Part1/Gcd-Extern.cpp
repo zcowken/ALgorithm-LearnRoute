@@ -36,6 +36,7 @@ void test()
     int x;
     int y;
     int d = exgcd(100, 12, x, y);
+
     cout << x << " " << y << "\td: " << d << endl;
 }
 
