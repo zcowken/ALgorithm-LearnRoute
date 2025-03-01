@@ -20,16 +20,17 @@ public class Main {
                     System.out.print(", ");
 
                 }
-
             }
             System.out.print("}");
+            System.out.print(", ");
+
         }
         System.out.print("}");
     }
 
     public static void main(String[] args) {
         Gson gson = new Gson();
-        String json = "[[1,2,3],[4,5,6],[7,8,9]]";
+        String json = "[[1,4,5],[1,3,4],[2,6]]";
         // 定义列表类型
         Type listType = new TypeToken<List<List<Integer>>>() {
         }.getType();
